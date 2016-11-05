@@ -10,6 +10,7 @@ buildscript {
 
 apply plugin: 'kotlin'
 apply plugin: 'application'
+apply plugin: 'idea'
 
 mainClassName = 'demo.HelloWorldKt'
 
