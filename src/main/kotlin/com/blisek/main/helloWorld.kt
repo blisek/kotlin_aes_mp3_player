@@ -1,4 +1,4 @@
-package demo
+package com.blisek.main
 
 import com.blisek.filecrypto.*
 import com.blisek.player.Player
@@ -66,7 +66,7 @@ fun main(args: Array<String>) {
         when (workMode) {
             WorkMode.DECRYPT -> decrypt(fileCrypt)
             WorkMode.ENCRYPT -> encrypt(fileCrypt)
-            WorkMode.PLAY    -> play(fileCrypt)
+            WorkMode.PLAY -> play(fileCrypt)
         }
 
     }

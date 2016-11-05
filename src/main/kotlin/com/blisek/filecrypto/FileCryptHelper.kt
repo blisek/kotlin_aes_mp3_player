@@ -9,7 +9,7 @@ import java.util.*
 import javax.crypto.Cipher
 
 /**
- * Created by bartek on 13.11.16.
+ * Created by bartek on 05.11.16.
  */
 
 internal val EncryptedFileHeader: ByteArray = "ENCMP3".toByteArray(Charsets.US_ASCII)

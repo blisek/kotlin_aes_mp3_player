@@ -13,7 +13,7 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 /**
- * Created by bartek on 13.11.16.
+ * Created by bartek on 05.11.16.
  */
 private val BUFFER_SIZE = 2048
 
