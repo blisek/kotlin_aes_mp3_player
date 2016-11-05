@@ -23,6 +23,9 @@ repositories {
 dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
+  // https://mvnrepository.com/artifact/commons-io/commons-io
+  compile group: 'commons-io', name: 'commons-io', version: '2.5'
+
   testCompile 'junit:junit:4.11'
   testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
