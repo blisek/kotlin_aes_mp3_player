@@ -1,11 +1,11 @@
 buildscript {
-  ext.kotlin_version = '1.0.0'
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-  }
+    ext.kotlin_version = '1.0.5'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
 
 apply plugin: 'kotlin'
@@ -17,25 +17,33 @@ mainClassName = 'demo.HelloWorldKt'
 defaultTasks 'run'
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
-  // https://mvnrepository.com/artifact/commons-io/commons-io
-  compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+// https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on
+    compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.55'
 
-  testCompile 'junit:junit:4.11'
-  testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    // https://mvnrepository.com/artifact/com.googlecode.soundlibs/jlayer
+    compile group: 'com.googlecode.soundlibs', name: 'jlayer', version: '1.0.1-1'
+
+
+    testCompile 'junit:junit:4.11'
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 
 jar {
-  manifest {
-    attributes "Main-Class": "$mainClassName"
-  }
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
 
-  from {
-    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-  }
+}
+
+task copyRuntimeLibs(type: Copy) {
+    into "lib"
+    from configurations.runtime
 }

@@ -6,6 +6,7 @@ import java.io.InputStream
 import java.security.Key
 import java.security.KeyStore
 import java.util.*
+import javax.crypto.Cipher
 
 /**
  * Created by bartek on 13.11.16.
@@ -13,8 +14,12 @@ import java.util.*
 
 internal val EncryptedFileHeader: ByteArray = "ENCMP3".toByteArray(Charsets.US_ASCII)
 
-fun getCipherEngineName(alg: String, mode: String, padding: String?) : String =
+fun getCipherEngineName(alg: String, mode: String, padding: String?): String =
         String.format("%s/%s/%s", alg, mode, padding ?: "NoPadding")
+
+fun getCipherEngine(alg: String, mode: String, padding: String?): Cipher =
+        Cipher.getInstance(getCipherEngineName(alg, mode, padding), "BC")
+
 
 fun getKeyFromKeystore(keystoreFile: File, keystorePass: String, alias: String, keyPass: String) : Key {
     FileInputStream(keystoreFile).use {
